@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import "./Menu"
+import "./Menu.css"
 import FoodDisp from '../../components/FoodDisp/FoodDisp'
 import Explore from '../../components/Explore/Explore'
 const Menu = () => {
