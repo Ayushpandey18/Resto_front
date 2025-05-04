@@ -6,7 +6,13 @@ const getHeaders = () => ({
   Authorization: `Bearer ${localStorage.getItem("accessToken") || ""}`,
 });
 
-// Register user
+
+const setCookie = (name, value, days) => {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);  // Set expiration date (in days)
+  const expires = `expires=${date.toUTCString()}`;
+  document.cookie = `${name}=${value};${expires};path=/;SameSite=Strict`;
+};
 export const registerUser = async (registrationData) => {
   try {
     const response = await fetch(`${BASE_URL}/user/register`, {
@@ -49,7 +55,8 @@ export const loginUser = async (loginData) => {
     localStorage.setItem("refreshToken", data1.data.refreshToken);
 
     // Set cookies for accessToken and refreshToken
-
+    setCookie("accessToken", data1.data.accessToken, 10);  // 10 days
+    setCookie("refreshToken", data1.data.refreshToken, 10); // 10 days
     return data1;
   } catch (error) {
     console.error("Login error:", error);
@@ -58,7 +65,9 @@ export const loginUser = async (loginData) => {
 };
 
 // Logout user
-
+const removeCookie = (name) => {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Strict`;
+};
 export const logoutUser = async () => {
   try {
     const response = await fetch(`${BASE_URL}/auth/logout`, {
@@ -69,8 +78,11 @@ export const logoutUser = async () => {
     if (!response.ok) {
       throw new Error("Logout failed.");
     }
+    removeCookie("accessToken");
+    removeCookie("refreshToken");
 
     localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
     return await response.json();
   } catch (error) {
     console.error("Logout error:", error);
