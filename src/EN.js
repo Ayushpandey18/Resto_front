@@ -1,2 +1,2 @@
-const a=import.meta.env.VITE_back_URL;
+const a=https://resto-back-we2c.onrender.com/api/v1;
 export default a;
