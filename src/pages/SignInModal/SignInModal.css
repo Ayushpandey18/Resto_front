@@ -1,0 +1,111 @@
+
+.sign-in-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  
+  .modal-content {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    width: 90%;
+    max-width: 450px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.4s ease;
+  }
+  
+ 
+  .close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .modal-content h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+
+  .modal-content label {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+  
+
+  .modal-content input[type="text"],
+  .modal-content input[type="tel"],
+  .modal-content input[type="email"],
+  .modal-content input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+
+  .modal-content input:focus {
+    outline: none;
+    border-color: #5a67d8;
+    box-shadow: 0 0 5px rgba(90, 103, 216, 0.4);
+  }
+  
+ 
+  .modal-content button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #000000;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 1.5rem;
+    font-weight: 600;
+  }
+  
+
+  .modal-content button[type="submit"]:hover {
+    background-color: #4c51bf;
+    transform: translateY(-2px);
+  }
+  
+ 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

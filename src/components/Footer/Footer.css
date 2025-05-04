@@ -1,0 +1,97 @@
+#foot {
+    color: #d9d9d9;
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 3vw;
+    padding-top: 80px;
+    margin-top: 500px;
+}
+
+.fcontain {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+}
+
+.fool, .fooc, .foor {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.social {
+    display: flex;
+    gap: 20px;
+}
+
+.social img {
+    width: 40px;
+    cursor: pointer;
+}
+
+.fool li, .fooc li, .foor li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.fooc h2, .foor h2 {
+    font-size: larger;
+    color: white;
+    font-weight: 500;
+}
+
+#foot hr {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: grey;
+    border: none;
+}
+
+.amader-logo {
+    max-height: 125px;
+    width: auto;
+}
+
+/* Responsive Styling */
+@media (max-width: 520px) {
+    #foot {
+        width: 100%;
+    }
+
+    .fcontain {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .fool {
+        align-items: center;
+        text-align: center;
+    }
+
+    .fooc, .foor {
+        width: 45%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .fooc h2, .foor h2 {
+        margin-bottom:none;
+    }
+
+    .fool p {
+        font-size: 15px;
+    }
+
+    .amader-logo {
+        max-height: 75px;
+        width: auto;
+    }
+}

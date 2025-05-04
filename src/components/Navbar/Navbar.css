@@ -1,0 +1,102 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo a {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    height: 50px;
+    width: auto;
+    max-width: 320px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after,
+  .nav-links .active-link::after {
+    width: 100%; /* Add underline for active and hovered links */
+  }
+  
+  .nav-links a:hover {
+    color: #f0c14b; /* Highlight on hover */
+  }
+  
+  .active-link {
+    color: #f0c14b; /* Change the color of the active link */
+  }
+  
+  .active-link::after {
+    width: 100%; /* Show underline on active links */
+  }
+  /* Responsive design for smaller screens */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      display: flex;
+      flex-direction: column; /* Can add a hamburger menu here for mobile devices */
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 10px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      position: relative;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 3px;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      position: relative;
+    }
+  }
+  
+  
