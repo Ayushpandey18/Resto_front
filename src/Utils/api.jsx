@@ -70,20 +70,11 @@ const removeCookie = (name) => {
 };
 export const logoutUser = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/auth/logout`, {
-      method: "POST",
-      headers: getHeaders(),
-    });
-
-    if (!response.ok) {
-      throw new Error("Logout failed.");
-    }
     removeCookie("accessToken");
     removeCookie("refreshToken");
 
     localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
-    return await response.json();
   } catch (error) {
     console.error("Logout error:", error);
     throw error;
