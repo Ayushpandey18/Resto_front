@@ -54,10 +54,16 @@ const Cart = () => {
       }
 
       const { data } = await axios.post(
-        `${a}/order/placeorder`,
-        { items, deliveryAddress, totalAmount },
-        { withCredentials: true }
-      );
+  `${a}/order/placeorder`,
+  { items, deliveryAddress, totalAmount },
+  {
+    withCredentials: true,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  }
+);
+
 
       const { razorpayOrder } = data;
 
