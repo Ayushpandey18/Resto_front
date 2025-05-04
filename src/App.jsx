@@ -44,16 +44,26 @@ function App() {
   };
 
   const handleLogout = async () => {
-    try {
-      await axios.post(`${a}/user/logout`, {}, { withCredentials: true });
-      setIsLoggedIn(false); 
-      localStorage.clear();
-      alert("Logged out successfully");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      alert("Logout failed. Please try again.");
-    }
-  };
+  try {
+    const token = localStorage.getItem("accessToken");
+    const response = await axios.post(
+      `${a}/user/logout`,
+      {},
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,  // Send access token in header
+        },
+      }
+    );
+    localStorage.clear();
+    alert("Logged out successfully");
+  } catch (error) {
+    console.error("Logout failed:", error);
+    alert("Logout failed. Please try again.");
+  }
+};
+
 
   return (
     <div className="App">
