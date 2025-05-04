@@ -1,12 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { fetchFoodList } from "../assets/assets"; // Make sure path is correct
-
+import React, { createContext, useContext, useState } from "react";
+import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
-
 const StoreContextProvider = (props) => {
-  const [cartItems, setCart] = useState({});
-  const [food_list, setFoodList] = useState([]);
-
+  const [cartit,setcart]=useState({});
+   const [food_list, setFoodList] = useState([]);
   // Fetch food data on mount
   useEffect(() => {
     const getFood = async () => {
@@ -15,39 +12,31 @@ const StoreContextProvider = (props) => {
     };
     getFood();
   }, []);
-
-  const addToCart = (id) => {
-    setCart((prev) => ({
-      ...prev,
-      [id]: (prev[id] || 0) + 1,
-    }));
-  };
-
-  const removeFromCart = (id) => {
-    setCart((prev) => {
-      const newCart = { ...prev };
-      if (newCart[id] === 1) {
-        delete newCart[id];
-      } else {
-        newCart[id] -= 1;
-      }
-      return newCart;
-    });
-  };
-
+  const addtocart=(id)=>{
+  if(!cartit[id]){
+  setcart((prev)=>({...prev,[id]:1}))
+  }
+  else{
+  setcart((prev)=>({...prev,[id]:prev[id]+1}))
+  }
+  }
   const clearCart = () => {
-    setCart({});
+    setcart({});
   };
-
+  const remfromcart = (id) => {
+    if (cartit[id] === 1) {
+      setcart((prev) => {
+        const newCart = { ...prev };
+        delete newCart[id];
+        return newCart;
+      });
+    } else {
+      setcart((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+    }
+  };
   const contextValue = {
-    food_list,
-    cartItems,
-    setCart,
-    addToCart,
-    removeFromCart,
-    clearCart,
+   food_list,cartit,setcart,addtocart,remfromcart,clearCart
   };
-
   return (
     <StoreContext.Provider value={contextValue}>
       {props.children}
