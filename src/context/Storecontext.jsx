@@ -5,7 +5,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCart] = useState({});
-  const [foodList, setFoodList] = useState([]);
+  const [food_list, setFoodList] = useState([]);
 
   // Fetch food data on mount
   useEffect(() => {
@@ -40,7 +40,7 @@ const StoreContextProvider = (props) => {
   };
 
   const contextValue = {
-    foodList,
+    food_list,
     cartItems,
     setCart,
     addToCart,
